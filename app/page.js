@@ -58,7 +58,7 @@ export default function Home() {
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-              Hi, I'm <span className="text-blue-600">Nabin Pulami</span>
+              Hi, I&apos;m <span className="text-blue-600">Nabin Pulami</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-4">
               BCA Student & Aspiring Data Analyst
@@ -84,7 +84,7 @@ export default function Home() {
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">About Me</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              I'm a motivated BCA 7th-semester student from Everest College, passionate about data analysis and software development. 
+              I&apos;m a motivated BCA 7th-semester student from Everest College, passionate about data analysis and software development. 
               Currently seeking opportunities in Data Analysis/Software projects to apply my academic knowledge while learning industry-standard tools.
             </p>
           </div>
@@ -93,8 +93,8 @@ export default function Home() {
             <div>
               <h3 className="text-2xl font-semibold mb-4 text-gray-900">My Journey</h3>
               <p className="text-gray-600 mb-4">
-                As a BCA student at Everest College under Tribhuvan University, I've developed a strong foundation 
-                in programming, database design, and computer applications. I'm particularly interested in data analysis, 
+                As a BCA student at Everest College under Tribhuvan University, I&apos;ve developed a strong foundation 
+                in programming, database design, and computer applications. I&apos;m particularly interested in data analysis, 
                 digital marketing, and modern technology tools.
               </p>
               <p className="text-gray-600 mb-4">
@@ -102,7 +102,7 @@ export default function Home() {
                 and Kaggle tutorials to enhance my skills beyond the classroom.
               </p>
               <p className="text-gray-600">
-                I'm highly adaptable, enthusiastic, and ready to contribute in a professional environment while 
+                I&apos;m highly adaptable, enthusiastic, and ready to contribute in a professional environment while 
                 gaining practical experience in the tech industry.
               </p>
             </div>
@@ -163,7 +163,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">Secondary Education Examination (SEE)</h3>
-                  <p className="text-purple-600 font-medium">Little Angels' School, Hattiban, Lalitpur</p>
+                  <p className="text-purple-600 font-medium">Little Angels&apos; School, Hattiban, Lalitpur</p>
                 </div>
                 <div className="mt-2 md:mt-0 text-right">
                   <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Completed: 2019</span>
@@ -206,7 +206,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Skills & Learning</h2>
-            <p className="text-lg text-gray-600">Technologies I'm learning and skills I'm developing</p>
+            <p className="text-lg text-gray-600">Technologies I&apos;m learning and skills I&apos;m developing</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -416,8 +416,8 @@ export default function Home() {
       <section id="contact" className="py-20 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
-            <p className="text-lg text-gray-300">I'm actively seeking opportunities in Data Analysis/Software projects and would love to hear from you!</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Let&apos;s Connect</h2>
+            <p className="text-lg text-gray-300">I&apos;m actively seeking opportunities in Data Analysis/Software projects and would love to hear from you!</p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
