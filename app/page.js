@@ -498,7 +498,7 @@ export default function Home() {
               
               {submitStatus === 'success' && (
                 <div className="bg-green-600 text-white p-3 rounded-lg mb-4">
-                  ✅ Message sent successfully! I'll get back to you soon.
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
