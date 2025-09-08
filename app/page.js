@@ -192,7 +192,7 @@ export default function Home() {
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">+2 Science</h3>
-                  <p className="text-green-600 font-medium">V.S. Niketan College, Minbhawan, Kathmandu</p>
+                  <p className="text-green-600 font-medium">V.S Niketan College, Minbhawan,Kathmandu</p>
                 </div>
                 <div className="mt-2 md:mt-0 text-right">
                   <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Completed: 2021</span>
