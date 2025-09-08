@@ -1,7 +1,7 @@
-// app/page.js
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
 
 export default function Home() {
   const [formData, setFormData] = useState({
@@ -11,6 +11,19 @@ export default function Home() {
     message: ''
   })
 
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null)
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init('YOUR_PUBLIC_KEY') // Replace with your actual EmailJS public key
+  }, [])
+
+  // Replace these with your actual EmailJS configuration
+  const EMAILJS_SERVICE_ID = 'service_di0aq5d'
+  const EMAILJS_TEMPLATE_ID = 'template_dc24tvf' // Replace with your actual template ID
+  const EMAILJS_PUBLIC_KEY = 'N81H_Lf3PLKdMoaVl' // Replace with your actual public key
+
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -19,12 +32,43 @@ export default function Home() {
     }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const mailtoLink = `mailto:pulaminabin10@gmail.com?subject=${encodeURIComponent(formData.subject || 'Portfolio Contact')}&body=${encodeURIComponent(
-      `Hi Nabin,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}\n\nBest regards`
-    )}`
-    window.location.href = mailtoLink
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject || 'Portfolio Contact',
+        message: formData.message,
+        to_email: 'pulaminabin10@gmail.com'
+      }
+
+      const result = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      )
+
+      console.log('Email sent successfully:', result)
+      setSubmitStatus('success')
+      
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      })
+
+    } catch (error) {
+      console.error('Failed to send email:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -130,7 +174,6 @@ export default function Home() {
           </div>
 
           <div className="space-y-8">
-            {/* BCA */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
@@ -145,7 +188,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* +2 */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-500">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
@@ -158,7 +200,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* SEE */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-500">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
@@ -171,7 +212,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Certification */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-yellow-500">
               <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div>
@@ -210,7 +250,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Technical Skills */}
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-center text-blue-600">Technical Skills</h3>
               <div className="space-y-3">
@@ -235,7 +274,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Academic Knowledge */}
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-center text-green-600">Academic Knowledge</h3>
               <div className="space-y-3">
@@ -266,7 +304,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Soft Skills */}
             <div className="bg-gray-50 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-4 text-center text-purple-600">Soft Skills</h3>
               <div className="space-y-3">
@@ -309,12 +346,11 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* E-commerce Project */}
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
               <div className="h-48 bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center">
                 <div className="text-white text-center">
                   <div className="text-4xl mb-2">🛒</div>
-                  <h3 className="text-xl font-semibold ">E-commerce Website</h3>
+                  <h3 className="text-xl font-semibold">E-commerce Website</h3>
                 </div>
               </div>
               <div className="p-6">
@@ -334,7 +370,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Fitness Tracker */}
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
               <div className="h-48 bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center">
                 <div className="text-white text-center">
@@ -359,7 +394,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Learning Portfolio */}
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
               <div className="h-48 bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center">
                 <div className="text-white text-center">
@@ -384,7 +418,6 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Future Learning */}
             <div className="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
               <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
                 <div className="text-gray-600 text-center">
@@ -462,6 +495,18 @@ export default function Home() {
 
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-2xl font-semibold mb-6">Send Message</h3>
+              
+              {submitStatus === 'success' && (
+                <div className="bg-green-600 text-white p-3 rounded-lg mb-4">
+                  ✅ Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="bg-red-600 text-white p-3 rounded-lg mb-4">
+                  ❌ Failed to send message. Please try again later.
+                </div>
+              )}
+
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <input 
@@ -471,6 +516,7 @@ export default function Home() {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="w-full p-3 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                 </div>
                 <div>
@@ -481,6 +527,7 @@ export default function Home() {
                     value={formData.email}
                     onChange={handleInputChange}
                     className="w-full p-3 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                 </div>
                 <div>
@@ -501,13 +548,17 @@ export default function Home() {
                     value={formData.message}
                     onChange={handleInputChange}
                     className="w-full p-3 bg-gray-700 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   ></textarea>
                 </div>
                 <button 
                   type="submit"
-                  className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isSubmitting}
+                  className={`w-full p-3 rounded-lg text-white transition focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                    isSubmitting ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                  }`}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
