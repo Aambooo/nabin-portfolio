@@ -97,8 +97,12 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
           <div className="text-center">
             <div className="mb-8">
-              <div className="w-32 h-32 mx-auto bg-gradient-to-r from-blue-400 to-purple-500 rounded-full mb-4 flex items-center justify-center text-white text-4xl font-bold">
-                NP
+              <div className="w-32 h-32 mx-auto rounded-full mb-4 overflow-hidden">
+                <img 
+                  src="/nabin.png"  // <-- replace with actual file path
+                  alt="Nabin Pulami" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
