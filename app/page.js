@@ -14,15 +14,13 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
 
-  // Initialize EmailJS
   useEffect(() => {
-    emailjs.init('YOUR_PUBLIC_KEY') // Replace with your actual EmailJS public key
+    emailjs.init('YOUR_PUBLIC_KEY') 
   }, [])
 
-  // Replace these with your actual EmailJS configuration
   const EMAILJS_SERVICE_ID = 'service_di0aq5d'
-  const EMAILJS_TEMPLATE_ID = 'template_dc24tvf' // Replace with your actual template ID
-  const EMAILJS_PUBLIC_KEY = 'N81H_Lf3PLKdMoaVl' // Replace with your actual public key
+  const EMAILJS_TEMPLATE_ID = 'template_dc24tvf'
+  const EMAILJS_PUBLIC_KEY = 'N81H_Lf3PLKdMoaVl' 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target
@@ -99,7 +97,7 @@ export default function Home() {
             <div className="mb-8">
               <div className="w-32 h-32 mx-auto rounded-full mb-4 overflow-hidden">
                 <img 
-                  src="/magar.jpg"  // <-- replace with actual file path
+                  src="/magar.jpg"  
                   alt="Nabin Pulami" 
                   className="w-full h-full object-cover"
                 />
