@@ -99,7 +99,7 @@ export default function Home() {
             <div className="mb-8">
               <div className="w-32 h-32 mx-auto rounded-full mb-4 overflow-hidden">
                 <img 
-                  src="/nabin.png"  // <-- replace with actual file path
+                  src="/magar.jpg"  // <-- replace with actual file path
                   alt="Nabin Pulami" 
                   className="w-full h-full object-cover"
                 />
