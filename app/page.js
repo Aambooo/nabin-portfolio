@@ -301,7 +301,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">E-commerce Website</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">E-commerce Website</h3>
                 <p className="text-gray-600 mb-4">
                   Built a basic front-end e-commerce website as part of web development coursework. 
                   This group project helped me understand HTML, CSS, and basic web design principles.
@@ -323,7 +323,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Diet & Exercise Tracker</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">Diet & Exercise Tracker</h3>
                 <p className="text-gray-600 mb-4">
                   Developed a Streamlit-based application to track proper diet and exercise according to weight 
                   and height categories using Fuzzy Logic.
@@ -345,7 +345,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Personal Portfolio</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">Personal Portfolio</h3>
                 <p className="text-gray-600 mb-4">
                   Created this responsive portfolio website using Next.js and Tailwind CSS to showcase 
                   my learning journey and projects.
@@ -366,7 +366,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Future Learning Projects</h3>
+                <h3 className="text-xl font-semibold mb-2 text-gray-900">Future Learning Projects</h3>
                 <p className="text-gray-600 mb-4">
                   Currently planning to work on data analysis projects using Python and SQL, 
                   and exploring Power BI for data visualization.

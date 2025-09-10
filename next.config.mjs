@@ -2,13 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    unoptimized: true, 
-    domains: [], 
+    unoptimized: true,
+    domains: [],
   },
   eslint: {
-    
     dirs: ['pages', 'components', 'app'],
   },
 }
 
-module.exports = nextConfig
+export default nextConfig
