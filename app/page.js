@@ -13,9 +13,46 @@ export default function Home() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [activeSection, setActiveSection] = useState('home')
 
   useEffect(() => {
     emailjs.init('YOUR_PUBLIC_KEY') 
+  }, [])
+
+  const smoothScrollTo = (elementId, event) => {
+    event.preventDefault()
+    const element = document.getElementById(elementId)
+    if (element) {
+      const navbarHeight = 80 
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset
+      const offsetPosition = elementPosition - navbarHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'about', 'education', 'skills', 'projects', 'contact']
+      const navbarHeight = 80
+      
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const section = document.getElementById(sections[i])
+        if (section) {
+          const rect = section.getBoundingClientRect()
+          if (rect.top <= navbarHeight + 100) {
+            setActiveSection(sections[i])
+            break
+          }
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const EMAILJS_SERVICE_ID = 'service_di0aq5d'
@@ -68,23 +105,38 @@ export default function Home() {
       setIsSubmitting(false)
     }
   }
-
+  
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Navigation */}
-      <nav className="bg-white shadow-sm fixed w-full top-0 z-10">
+      <nav className="bg-white shadow-sm fixed w-full top-0 z-10 transition-all duration-300">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="text-xl font-bold text-gray-800">
               PORTFOLIO
             </div>
             <div className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-600 hover:text-gray-900">Home</a>
-              <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
-              <a href="#education" className="text-gray-600 hover:text-gray-900">Education</a>
-              <a href="#skills" className="text-gray-600 hover:text-gray-900">Skills</a>
-              <a href="#projects" className="text-gray-600 hover:text-gray-900">Projects</a>
-              <a href="#contact" className="text-gray-600 hover:text-gray-900">Contact</a>
+              {[
+                { id: 'home', label: 'Home' },
+                { id: 'about', label: 'About' },
+                { id: 'education', label: 'Education' },
+                { id: 'skills', label: 'Skills' },
+                { id: 'projects', label: 'Projects' },
+                { id: 'contact', label: 'Contact' }
+              ].map(({ id, label }) => (
+                <a 
+                  key={id}
+                  href={`#${id}`}
+                  onClick={(e) => smoothScrollTo(id, e)}
+                  className={`transition-colors duration-300 ${
+                    activeSection === id 
+                      ? 'text-blue-600 font-medium' 
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -113,10 +165,18 @@ export default function Home() {
               Motivated 7th-semester student seeking opportunities in Data Analysis/Software projects.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#contact" className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition">
+              <a 
+                href="#contact" 
+                onClick={(e) => smoothScrollTo('contact', e)}
+                className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all duration-300 transform hover:scale-105"
+              >
                 Get In Touch
               </a>
-              <a href="#projects" className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition">
+              <a 
+                href="#projects" 
+                onClick={(e) => smoothScrollTo('projects', e)}
+                className="border border-blue-600 text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105"
+              >
                 View My Projects
               </a>
             </div>
