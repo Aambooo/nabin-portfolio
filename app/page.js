@@ -2,22 +2,27 @@
 import { useState, useEffect } from 'react'
 
 export default function Portfolio() {
+  // Add a mounted state to prevent hydration mismatch
   const [isMounted, setIsMounted] = useState(false)
   
+  // Form data state - stores what user types in contact form
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
-
+  
+  // Loading and status states for form submission
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
 
+  // Ensure client-side rendering matches server-side
   useEffect(() => {
     setIsMounted(true)
   }, [])
 
+  // Handle form input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({
@@ -26,13 +31,14 @@ export default function Portfolio() {
     }))
   }
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
 
     try {
-  
+      // EmailJS configuration - same as your original
       const emailjs = (await import('@emailjs/browser')).default
       
       const templateParams = {
@@ -61,6 +67,7 @@ export default function Portfolio() {
     }
   }
 
+  // Show loading or return null until component is mounted
   if (!isMounted) {
     return null
   }
@@ -159,6 +166,7 @@ export default function Portfolio() {
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">Education</h2>
           
           <div className="space-y-6">
+            {/* BCA */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-blue-500">
               <div className="flex justify-between items-start">
                 <div>
@@ -173,6 +181,7 @@ export default function Portfolio() {
               </div>
             </div>
 
+            {/* +2 Science */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-green-500">
               <div className="flex justify-between items-start">
                 <div>
@@ -183,6 +192,7 @@ export default function Portfolio() {
               </div>
             </div>
 
+            {/* SEE */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-purple-500">
               <div className="flex justify-between items-start">
                 <div>
@@ -193,6 +203,7 @@ export default function Portfolio() {
               </div>
             </div>
 
+            {/* CCNA */}
             <div className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-yellow-500">
               <div className="flex justify-between items-start">
                 <div>
@@ -290,7 +301,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">E-commerce Website</h3>
+                <h3 className="text-xl font-semibold mb-2">E-commerce Website</h3>
                 <p className="text-gray-600 mb-4">
                   Built a basic front-end e-commerce website as part of web development coursework. 
                   This group project helped me understand HTML, CSS, and basic web design principles.
@@ -312,7 +323,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">Diet & Exercise Tracker</h3>
+                <h3 className="text-xl font-semibold mb-2">Diet & Exercise Tracker</h3>
                 <p className="text-gray-600 mb-4">
                   Developed a Streamlit-based application to track proper diet and exercise according to weight 
                   and height categories using Fuzzy Logic.
@@ -334,7 +345,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">Personal Portfolio</h3>
+                <h3 className="text-xl font-semibold mb-2">Personal Portfolio</h3>
                 <p className="text-gray-600 mb-4">
                   Created this responsive portfolio website using Next.js and Tailwind CSS to showcase 
                   my learning journey and projects.
@@ -355,7 +366,7 @@ export default function Portfolio() {
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2 text-gray-900">Future Learning Projects</h3>
+                <h3 className="text-xl font-semibold mb-2">Future Learning Projects</h3>
                 <p className="text-gray-600 mb-4">
                   Currently planning to work on data analysis projects using Python and SQL, 
                   and exploring Power BI for data visualization.
@@ -379,7 +390,7 @@ export default function Portfolio() {
           </p>
           
           <div className="grid md:grid-cols-2 gap-12">
-
+            {/* Contact Info */}
             <div>
               <h3 className="text-2xl font-semibold mb-6">Contact Information</h3>
               <div className="space-y-4 mb-8">
@@ -422,12 +433,14 @@ export default function Portfolio() {
               </div>
             </div>
 
+            {/* Contact Form */}
             <div className="bg-gray-800 p-6 rounded-lg">
               <h3 className="text-2xl font-semibold mb-6">Send Message</h3>
               
+              {/* Success/Error Messages */}
               {submitStatus === 'success' && (
                 <div className="bg-green-600 text-white p-3 rounded-lg mb-4">
-                  ✅ Message sent successfully! I'll get back to you soon.
+                  ✅ Message sent successfully! I&apos;ll get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
